@@ -2,17 +2,34 @@
   display: flex;
   align-items: center;
   margin: 20px 0 40px 0;
+  @media (max-width: 576px) {
+    margin: 30px 0 40px 0;
+  }
 }
 
 .slide {
   border-radius: 50%;
-  border: 2px solid #ddd;
+  text-align: center;
   img {
     cursor: pointer;
+    border-radius: 50%;
     min-width: 69px;
     width: 69px;
     height: 69px;
   }
+  @media screen and (max-width: 992px) {
+    img {
+      min-width: 57px;
+      width: 57px;
+      height: 57px;
+    }
+  }
+}
+
+.colorActive {
+  transition: transform 0.4s;
+  transform: scale(0.9);
+  border: 1px solid #c5c5c5;
 }
 
 .prev,
