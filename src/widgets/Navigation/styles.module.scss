@@ -1,0 +1,20 @@
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button {
+  width: 325px;
+  height: 58px;
+  cursor: pointer;
+  border-radius: 14px;
+  background-color: #e5e5e5;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.buttoNext {
+  background-color: #000;
+  color: #fff;
+}

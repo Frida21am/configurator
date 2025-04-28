@@ -1,0 +1,34 @@
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin: 20px 0 40px 0;
+}
+
+.arrowButton {
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.sliderWrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  gap: 19px;
+}
+
+.circle {
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.circleImage {
+  cursor: pointer;
+}

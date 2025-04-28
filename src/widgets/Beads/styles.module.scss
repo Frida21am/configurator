@@ -1,0 +1,96 @@
+.beadsContainer {
+  margin: 45px 0 55px 0;
+}
+
+.beads {
+  position: relative;
+  width: 440px;
+  height: 440px;
+  margin: 0 auto;
+}
+
+.circle {
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  width: 41px;
+  height: 41px;
+  border-radius: 50%;
+}
+
+/* Создаем 25 бусин по кругу */
+.circle:nth-child(1) {
+  transform: rotate(-54deg) translate(200px) rotate(54deg);
+}
+.circle:nth-child(2) {
+  transform: rotate(-42deg) translate(200px) rotate(42deg);
+}
+.circle:nth-child(3) {
+  transform: rotate(-30deg) translate(200px) rotate(30deg);
+}
+.circle:nth-child(4) {
+  transform: rotate(-18deg) translate(200px) rotate(18deg);
+}
+.circle:nth-child(5) {
+  transform: rotate(-6deg) translate(200px) rotate(6deg);
+}
+.circle:nth-child(6) {
+  transform: rotate(6deg) translate(200px) rotate(-6deg);
+}
+.circle:nth-child(7) {
+  transform: rotate(18deg) translate(200px) rotate(-18deg);
+}
+.circle:nth-child(8) {
+  transform: rotate(30deg) translate(200px) rotate(-30deg);
+}
+.circle:nth-child(9) {
+  transform: rotate(42deg) translate(200px) rotate(-42deg);
+}
+.circle:nth-child(10) {
+  transform: rotate(54deg) translate(200px) rotate(-54deg);
+}
+.circle:nth-child(11) {
+  transform: rotate(66deg) translate(200px) rotate(-66deg);
+}
+.circle:nth-child(12) {
+  transform: rotate(78deg) translate(200px) rotate(-78deg);
+}
+.circle:nth-child(13) {
+  transform: rotate(90deg) translate(200px) rotate(-90deg);
+}
+.circle:nth-child(14) {
+  transform: rotate(102deg) translate(200px) rotate(-102deg);
+}
+.circle:nth-child(15) {
+  transform: rotate(114deg) translate(200px) rotate(-114deg);
+}
+.circle:nth-child(16) {
+  transform: rotate(126deg) translate(200px) rotate(-126deg);
+}
+.circle:nth-child(17) {
+  transform: rotate(138deg) translate(200px) rotate(-138deg);
+}
+.circle:nth-child(18) {
+  transform: rotate(150deg) translate(200px) rotate(-150deg);
+}
+.circle:nth-child(19) {
+  transform: rotate(162deg) translate(200px) rotate(-162deg);
+}
+.circle:nth-child(20) {
+  transform: rotate(174deg) translate(200px) rotate(-174deg);
+}
+.circle:nth-child(21) {
+  transform: rotate(186deg) translate(200px) rotate(-186deg);
+}
+.circle:nth-child(22) {
+  transform: rotate(198deg) translate(200px) rotate(-198deg);
+}
+.circle:nth-child(23) {
+  transform: rotate(210deg) translate(200px) rotate(-210deg);
+}
+.circle:nth-child(24) {
+  transform: rotate(222deg) translate(200px) rotate(-222deg);
+}
+.circle:nth-child(25) {
+  transform: rotate(234deg) translate(200px) rotate(-234deg);
+}

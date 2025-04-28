@@ -1,0 +1,30 @@
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  margin: 20px 0 40px 0;
+}
+
+.slide {
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  img {
+    cursor: pointer;
+    min-width: 69px;
+    width: 69px;
+    height: 69px;
+  }
+}
+
+.prev,
+.next {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.next {
+  transform: rotate(180deg);
+}
