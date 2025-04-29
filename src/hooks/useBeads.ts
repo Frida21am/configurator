@@ -3,29 +3,29 @@ import { Bead } from "../shared/types/beads";
 
 export const useBeads = (
   initialData: Bead[],
-  selectedColor: string,
+  selectedColorSrc: string,
   mode: string
 ) => {
   const [beadsData, setBeadsData] = useState(initialData);
 
   // Режим Монохром
   useEffect(() => {
-    if (mode === "monochrome" && selectedColor) {
+    if (mode === "monochrome" && selectedColorSrc) {
       setBeadsData((prev) =>
-        prev.map((bead) => ({ ...bead, src: selectedColor }))
+        prev.map((bead) => ({ ...bead, src: selectedColorSrc }))
       );
     }
-  }, [selectedColor, mode]);
+  }, [selectedColorSrc, mode]);
 
   // Функция при нажатии на цвет из слайдера
   const handleClick = (id: number) => {
-    if (selectedColor && selectedColor !== "/colorsOfBeads/00.png") {
+    if (selectedColorSrc && selectedColorSrc !== "/colorsOfBeads/00.png") {
       switch (mode) {
         // Режим Индивидуальный
         case "individual":
           setBeadsData((prev) =>
             prev.map((bead) =>
-              bead.id === id ? { ...bead, src: selectedColor } : bead
+              bead.id === id ? { ...bead, src: selectedColorSrc } : bead
             )
           );
           break;
@@ -34,13 +34,13 @@ export const useBeads = (
           if (id <= 12) {
             setBeadsData((prev) =>
               prev.map((bead) =>
-                bead.id <= 12 ? { ...bead, src: selectedColor } : bead
+                bead.id <= 12 ? { ...bead, src: selectedColorSrc } : bead
               )
             );
           } else {
             setBeadsData((prev) =>
               prev.map((bead) =>
-                bead.id > 12 ? { ...bead, src: selectedColor } : bead
+                bead.id > 12 ? { ...bead, src: selectedColorSrc } : bead
               )
             );
           }
@@ -50,13 +50,13 @@ export const useBeads = (
           if (id === 17) {
             setBeadsData((prev) =>
               prev.map((bead) =>
-                bead.id === 17 ? { ...bead, src: selectedColor } : bead
+                bead.id === 17 ? { ...bead, src: selectedColorSrc } : bead
               )
             );
           } else {
             setBeadsData((prev) =>
               prev.map((bead) =>
-                bead.id === 17 ? bead : { ...bead, src: selectedColor }
+                bead.id === 17 ? bead : { ...bead, src: selectedColorSrc }
               )
             );
           }

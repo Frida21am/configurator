@@ -5,21 +5,24 @@ import { Color } from "../../shared/types/Colors";
 import styles from "./styles.module.scss";
 
 interface SliderSwiperColorsProps {
-  setSelectedColor: (src: string) => void;
   colors: Color[];
+  setSelectedColorName: (name: string) => void;
+  setSelectedColorSrc: (src: string) => void;
   setRandomBeadColors: (randomColor: string) => void;
 }
 
 const SliderSwiperColors = ({
-  setSelectedColor,
   colors,
+  setSelectedColorName,
+  setSelectedColorSrc,
   setRandomBeadColors,
 }: SliderSwiperColorsProps) => {
   const [activeColor, setActiveColor] = useState<number | null>(null);
 
-  const handleClickOnColor = (id: number, src: string) => {
+  const handleClickOnColor = (id: number, src: string, name: string) => {
     setActiveColor(id);
-    setSelectedColor(src);
+    setSelectedColorSrc(src);
+    setSelectedColorName(name);
     if (src === "/colorsOfBeads/00.png") {
       // Генерация случайного монохромного цвета кроме радужного
       let randomColor;
@@ -36,7 +39,7 @@ const SliderSwiperColors = ({
       <img
         src={color.src}
         alt={`Color ${color.id}`}
-        onClick={() => handleClickOnColor(color.id, color.src)}
+        onClick={() => handleClickOnColor(color.id, color.src, color.name)}
         className={`${activeColor === color.id ? styles.colorActive : ""}`}
       />
     </SwiperSlide>
@@ -89,7 +92,6 @@ const SliderSwiperColors = ({
       <Swiper {...swiperParams} style={{ padding: "10px 5px" }}>
         {slides}
       </Swiper>
-
       <div className={styles.next}>
         <img src="/icons/arrow.png" alt="Next" draggable="false" />
       </div>
