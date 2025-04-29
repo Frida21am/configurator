@@ -1,28 +1,14 @@
 import { useBeads } from "../../hooks/useBeads";
+import { Bead } from "../../shared/types/beads";
 import styles from "./styles.module.scss";
 
-interface Bead {
-  id: number;
-  src: string;
-}
-interface Color {
-  id: number;
-  src: string;
-}
-
 interface BeadsProps {
+  initialBeadsData: Bead[];
   selectedColor: string;
   mode: string;
-  colors: Color[];
 }
 
-/* Изначальный массив из 25 бусин */
-const initialBeadsData: Bead[] = Array.from({ length: 25 }, (_, index) => ({
-  id: index + 1,
-  src: "/colorsOfBeads/03.png",
-}));
-
-const Beads = ({ selectedColor, mode }: BeadsProps) => {
+const Beads = ({ initialBeadsData, selectedColor, mode }: BeadsProps) => {
   const { beadsData, handleClick } = useBeads(
     initialBeadsData,
     selectedColor,

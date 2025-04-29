@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
-
-interface Bead {
-  id: number;
-  src: string;
-}
+import { Bead } from "../shared/types/beads";
 
 export const useBeads = (
   initialData: Bead[],
@@ -12,7 +8,7 @@ export const useBeads = (
 ) => {
   const [beadsData, setBeadsData] = useState(initialData);
 
-  /* Режим Монохром */
+  // Режим Монохром
   useEffect(() => {
     if (mode === "monochrome" && selectedColor) {
       setBeadsData((prev) =>
@@ -21,10 +17,11 @@ export const useBeads = (
     }
   }, [selectedColor, mode]);
 
+  // Функция при нажатии на цвет из слайдера
   const handleClick = (id: number) => {
-    if (selectedColor) {
+    if (selectedColor && selectedColor !== "/colorsOfBeads/00.png") {
       switch (mode) {
-        /* Режим Индивидуальный */
+        // Режим Индивидуальный
         case "individual":
           setBeadsData((prev) =>
             prev.map((bead) =>
@@ -32,7 +29,7 @@ export const useBeads = (
             )
           );
           break;
-        /* Режим 2 цвета */
+        // Режим 2 цвета
         case "two-colors":
           if (id <= 12) {
             setBeadsData((prev) =>
@@ -48,7 +45,7 @@ export const useBeads = (
             );
           }
           break;
-        /* Режим С 1 бусиной */
+        // Режим С 1 бусиной
         case "one-bead":
           if (id === 17) {
             setBeadsData((prev) =>
