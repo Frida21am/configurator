@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Beads from "../../widgets/Beads";
-import Modes from "../../widgets/Modes";
-import Navigation from "../../widgets/Navigation";
-import SliderSwiperColors from "../../widgets/SliderSwiperColors";
+import Beads from "../Beads";
+import Modes from "../Modes";
+import SliderColors from "../SliderColors";
+import Navigation from "../Navigation";
 import { initialBeadsData } from "../../app/data/BeadsData";
 import { colors } from "../../app/data/colorsData";
 import styles from "./styles.module.scss";
@@ -10,7 +10,7 @@ import styles from "./styles.module.scss";
 const BeadsConfigurator = () => {
   const [selectedColorSrc, setSelectedColorSrc] = useState<string>("");
   const [selectedColorName, setSelectedColorName] = useState<string>("");
-  const [showColorLabel, setShowColorLabel] = useState<boolean>(false); // Состояние для управления видимостью плашки
+  const [showColorLabel, setShowColorLabel] = useState<boolean>(false);
   const [mode, setMode] = useState<string>("monochrome");
 
   // Нажатие кнопки выбора режима
@@ -49,7 +49,7 @@ const BeadsConfigurator = () => {
         selectedColorName={showColorLabel ? selectedColorName : ""}
       />
       <Modes setMode={handleSetMode} />
-      <SliderSwiperColors
+      <SliderColors
         setSelectedColorSrc={setSelectedColorSrc}
         colors={colors}
         setRandomBeadColors={setRandomBeadColors}

@@ -1,38 +1,28 @@
-import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { useColors } from "../../hooks/useColors";
 import { Color } from "../../shared/types/Colors";
 import styles from "./styles.module.scss";
 
-interface SliderSwiperColorsProps {
+interface SliderColorsProps {
   colors: Color[];
   setSelectedColorName: (name: string) => void;
   setSelectedColorSrc: (src: string) => void;
   setRandomBeadColors: (randomColor: string) => void;
 }
 
-const SliderSwiperColors = ({
+const SliderColors = ({
   colors,
   setSelectedColorName,
   setSelectedColorSrc,
   setRandomBeadColors,
-}: SliderSwiperColorsProps) => {
-  const [activeColor, setActiveColor] = useState<number | null>(null);
-
-  const handleClickOnColor = (id: number, src: string, name: string) => {
-    setActiveColor(id);
-    setSelectedColorSrc(src);
-    setSelectedColorName(name);
-    if (src === "/colorsOfBeads/00.png") {
-      // Генерация случайного монохромного цвета кроме радужного
-      let randomColor;
-      do {
-        randomColor = colors[Math.floor(Math.random() * colors.length)].src;
-      } while (randomColor === "/colorsOfBeads/00.png");
-      // Установка beadsData в родительском компоненте
-      setRandomBeadColors(randomColor);
-    }
-  };
+}: SliderColorsProps) => {
+  const { activeColor, handleClickOnColor } = useColors({
+    colors,
+    setSelectedColorName,
+    setSelectedColorSrc,
+    setRandomBeadColors,
+  });
 
   const slides = colors.map((color) => (
     <SwiperSlide key={color.id} className={styles.slide}>
@@ -99,4 +89,4 @@ const SliderSwiperColors = ({
   );
 };
 
-export default SliderSwiperColors;
+export default SliderColors;
