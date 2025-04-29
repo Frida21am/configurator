@@ -79,7 +79,9 @@ const SliderSwiperColors = ({
       <div className={styles.prev}>
         <img src="/icons/arrow.png" alt="Previous" draggable="false" />
       </div>
-      <Swiper {...swiperParams}>{slides}</Swiper>
+      <Swiper {...swiperParams} style={{ padding: "10px 5px" }}>
+        {slides}
+      </Swiper>
 
       <div className={styles.next}>
         <img src="/icons/arrow.png" alt="Next" draggable="false" />

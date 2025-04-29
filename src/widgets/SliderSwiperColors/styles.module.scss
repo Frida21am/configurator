@@ -1,9 +1,9 @@
 .sliderContainer {
   display: flex;
   align-items: center;
-  margin: 20px 0 40px 0;
+  margin: 10px 0 30px 0;
   @media (max-width: 576px) {
-    margin: 30px 0 40px 0;
+    margin: 20px 0 30px 0;
   }
 }
 
@@ -28,7 +28,7 @@
 
 .colorActive {
   transition: transform 0.4s;
-  transform: scale(0.9);
+  transform: scale(1.12);
   border: 1px solid #c5c5c5;
 }
 
