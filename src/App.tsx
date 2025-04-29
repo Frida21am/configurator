@@ -1,5 +1,5 @@
 import "./app/styles/styles.scss";
-import Configurator from "./widgets/Configurator";
+import Configurator from "./pages/Configurator";
 
 function App() {
   return (

@@ -21,49 +21,58 @@ export const useBeads = (
   const handleClick = (id: number) => {
     if (selectedColorSrc && selectedColorSrc !== "/colorsOfBeads/00.png") {
       switch (mode) {
-        // Режим Индивидуальный
         case "individual":
-          setBeadsData((prev) =>
-            prev.map((bead) =>
-              bead.id === id ? { ...bead, src: selectedColorSrc } : bead
-            )
-          );
+          updateIndividual(id);
           break;
-        // Режим 2 цвета
         case "two-colors":
-          if (id <= 12) {
-            setBeadsData((prev) =>
-              prev.map((bead) =>
-                bead.id <= 12 ? { ...bead, src: selectedColorSrc } : bead
-              )
-            );
-          } else {
-            setBeadsData((prev) =>
-              prev.map((bead) =>
-                bead.id > 12 ? { ...bead, src: selectedColorSrc } : bead
-              )
-            );
-          }
+          updateTwoColors(id);
           break;
-        // Режим С 1 бусиной
         case "one-bead":
-          if (id === 17) {
-            setBeadsData((prev) =>
-              prev.map((bead) =>
-                bead.id === 17 ? { ...bead, src: selectedColorSrc } : bead
-              )
-            );
-          } else {
-            setBeadsData((prev) =>
-              prev.map((bead) =>
-                bead.id === 17 ? bead : { ...bead, src: selectedColorSrc }
-              )
-            );
-          }
+          updateOneBead(id);
           break;
         default:
           break;
       }
+    }
+  };
+
+  const updateIndividual = (id: number) => {
+    setBeadsData((prev) =>
+      prev.map((bead) =>
+        bead.id === id ? { ...bead, src: selectedColorSrc } : bead
+      )
+    );
+  };
+
+  const updateTwoColors = (id: number) => {
+    if (id <= 12) {
+      setBeadsData((prev) =>
+        prev.map((bead) =>
+          bead.id <= 12 ? { ...bead, src: selectedColorSrc } : bead
+        )
+      );
+    } else {
+      setBeadsData((prev) =>
+        prev.map((bead) =>
+          bead.id > 12 ? { ...bead, src: selectedColorSrc } : bead
+        )
+      );
+    }
+  };
+
+  const updateOneBead = (id: number) => {
+    if (id === 17) {
+      setBeadsData((prev) =>
+        prev.map((bead) =>
+          bead.id === 17 ? { ...bead, src: selectedColorSrc } : bead
+        )
+      );
+    } else {
+      setBeadsData((prev) =>
+        prev.map((bead) =>
+          bead.id === 17 ? bead : { ...bead, src: selectedColorSrc }
+        )
+      );
     }
   };
 

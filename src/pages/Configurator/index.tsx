@@ -1,5 +1,5 @@
-import BeadsConfigurator from "../../features/beads-configurator";
-import BreadCrumbs from "../BreadCrumbs";
+import BeadsConfigurator from "../../widgets/BeadsConfigurator";
+import BreadCrumbs from "../../widgets/BreadCrumbs";
 import styles from "./styles.module.scss";
 
 const Configurator = () => {
