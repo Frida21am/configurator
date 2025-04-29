@@ -4,19 +4,28 @@ import styles from "./styles.module.scss";
 
 interface BeadsProps {
   initialBeadsData: Bead[];
-  selectedColor: string;
   mode: string;
+  selectedColorSrc: string;
+  selectedColorName: string;
 }
 
-const Beads = ({ initialBeadsData, selectedColor, mode }: BeadsProps) => {
+const Beads = ({
+  initialBeadsData,
+  mode,
+  selectedColorSrc,
+  selectedColorName,
+}: BeadsProps) => {
   const { beadsData, handleClick } = useBeads(
     initialBeadsData,
-    selectedColor,
+    selectedColorSrc,
     mode
   );
 
   return (
     <div className={styles.beadsContainer}>
+      {selectedColorName && (
+        <div className={styles.colorLabel}>{selectedColorName}</div>
+      )}
       <div className={styles.beads}>
         {beadsData.map((bead) => (
           <img

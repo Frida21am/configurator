@@ -1,57 +1,59 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Beads from "../../widgets/Beads";
 import Modes from "../../widgets/Modes";
 import Navigation from "../../widgets/Navigation";
 import SliderSwiperColors from "../../widgets/SliderSwiperColors";
-import { Bead } from "../../shared/types/beads";
+import { initialBeadsData } from "../../app/data/BeadsData";
+import { colors } from "../../app/data/colorsData";
 import styles from "./styles.module.scss";
 
 const BeadsConfigurator = () => {
-  const [selectedColor, setSelectedColor] = useState<string>("");
+  const [selectedColorSrc, setSelectedColorSrc] = useState<string>("");
+  const [selectedColorName, setSelectedColorName] = useState<string>("");
+  const [showColorLabel, setShowColorLabel] = useState<boolean>(false); // Состояние для управления видимостью плашки
   const [mode, setMode] = useState<string>("monochrome");
-
-  // Изначальный массив из 25 бусин
-  const initialBeadsData: Bead[] = Array.from({ length: 25 }, (_, index) => ({
-    id: index + 1,
-    src: "/colorsOfBeads/03.png",
-  }));
-
-  //Цвета бусин в слайдере
-  const colors = Array.from({ length: 36 }, (_, index) => ({
-    id: index + 1,
-    src: `/colorsOfBeads/${String(index).padStart(2, "0")}.png`,
-  }));
 
   // Нажатие кнопки выбора режима
   const handleSetMode = (newMode: string) => {
     setMode(newMode);
-    if (newMode === "monochrome") {
-      // Генерация случайного монохромного цвета кроме радужного
-      let randomColor;
-      do {
-        randomColor = colors[Math.floor(Math.random() * colors.length)].src;
-      } while (randomColor === "/colorsOfBeads/00.png");
-      setSelectedColor(randomColor);
-    }
   };
 
   // Нажатие радужной кнопки
   const setRandomBeadColors = (randomColor: string) => {
-    setSelectedColor(randomColor);
+    setSelectedColorSrc(randomColor);
+  };
+
+  // Эффект для скрытия плашки через 1 секунду
+  useEffect(() => {
+    if (showColorLabel) {
+      const timer = setTimeout(() => {
+        setShowColorLabel(false);
+      }, 1000);
+      // Очистка таймера при размонтировании или изменении состояния
+      return () => clearTimeout(timer);
+    }
+  }, [showColorLabel]);
+
+  const handleSetSelectedColorName = (name: string) => {
+    setSelectedColorName(name);
+    // Показываем плашку при выборе цвета
+    setShowColorLabel(true);
   };
 
   return (
     <div className={styles.configuratorContainer}>
       <Beads
         initialBeadsData={initialBeadsData}
-        selectedColor={selectedColor}
         mode={mode}
+        selectedColorSrc={selectedColorSrc}
+        selectedColorName={showColorLabel ? selectedColorName : ""}
       />
       <Modes setMode={handleSetMode} />
       <SliderSwiperColors
-        setSelectedColor={setSelectedColor}
+        setSelectedColorSrc={setSelectedColorSrc}
         colors={colors}
         setRandomBeadColors={setRandomBeadColors}
+        setSelectedColorName={handleSetSelectedColorName}
       />
       <Navigation />
     </div>
