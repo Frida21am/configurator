@@ -17,20 +17,10 @@ const BeadsConfigurator = () => {
 
   const handleSetMode = (newMode: string) => {
     setMode(newMode);
-
     if (newMode === "monochrome") {
-      // Генерация случайного цвета
+      // Генерация случайного монохромного цвета
       const randomColor = colors[Math.floor(Math.random() * colors.length)].src;
       setSelectedColor(randomColor);
-    } else if (newMode === "two-colors") {
-      const randomColor1 =
-        colors[Math.floor(Math.random() * colors.length)].src;
-      let randomColor2;
-      do {
-        randomColor2 = colors[Math.floor(Math.random() * colors.length)].src;
-      } while (randomColor1 === randomColor2);
-      // Устанавливаем выбранные цвета для бусин
-      setSelectedColor(randomColor1 + "," + randomColor2);
     }
   };
 
